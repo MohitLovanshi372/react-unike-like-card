@@ -1,0 +1,7 @@
+{
+  "name": "React Like/Unlike Card",
+  "description": "A beginner-friendly React project demonstrating props and independent useState() with reusable Like/Unlike cards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

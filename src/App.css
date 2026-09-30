@@ -1,0 +1,475 @@
+/* App.css - Clean, responsive styles for the React Like/Unlike Mini Project */
+
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --like-color: #f2869d;
+  --like-hover: #be123c;
+  --like-bg: #fff1f2;
+  --like-border: #fecdd3;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  color: var(--text-main);
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* Header Section */
+.app-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.badge-mini-project {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: #e0e7ff;
+  color: #3730a3;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.app-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+}
+
+.app-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Learning Concept Box */
+.concept-banner {
+  background: #ffffff;
+  border: 1px solid #e0e7ff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .concept-banner {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.concept-item {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.concept-item:nth-child(2) {
+  border-left-color: #ec4899;
+}
+
+.concept-item:nth-child(3) {
+  border-left-color: #10b981;
+}
+
+.concept-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.concept-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Add Custom Card Interactive Form */
+.add-card-section {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.add-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .add-card-form {
+    flex-direction: row;
+  }
+}
+
+.add-card-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-card-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.add-card-button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.add-card-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.add-card-button:active {
+  transform: scale(0.98);
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual Card Component Styles */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Style for liked state */
+.card.card-liked {
+  border-color: var(--like-border);
+  box-shadow: 0 6px 16px -2px rgba(225, 29, 72, 0.08);
+}
+
+.card-tag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background-color: #f1f5f9;
+  color: #475569;
+  margin-bottom: 0.75rem;
+}
+
+.card-liked .card-tag {
+  background-color: #ffe4e6;
+  color: #be123c;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+/* Status section */
+.card-status-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+}
+
+.card-liked .card-status-container {
+  background-color: var(--like-bg);
+}
+
+/* Like counter container */
+.card-counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background-color: #f8fafc;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.card-liked .card-counter-container {
+  background-color: #fff9fa;
+  border-color: var(--like-border);
+}
+
+.counter-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.card-liked .counter-badge {
+  background-color: #ffe4e6;
+  color: #be123c;
+}
+
+.status-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Not liked badge state */
+.status-not-liked {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.status-not-liked .status-indicator {
+  background-color: #94a3b8;
+}
+
+/* Liked badge state */
+.status-liked {
+  background-color: #fda4af;
+  color: #9f1239;
+}
+
+.status-liked .status-indicator {
+  background-color: #e11d48;
+  box-shadow: 0 0 6px rgba(225, 29, 72, 0.6);
+}
+
+/* Action Buttons */
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.card-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 9px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+/* When in "Like" state */
+.btn-like {
+  background-color: #f1f5f9;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+.btn-like:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-like:active {
+  transform: scale(0.98);
+}
+
+/* When in "Unlike" state */
+.btn-unlike {
+  background-color: var(--like-color);
+  color: #ffffff;
+  border-color: var(--like-color);
+}
+
+.btn-unlike:hover {
+  background-color: var(--like-hover);
+  border-color: var(--like-hover);
+}
+
+.btn-unlike:active {
+  transform: scale(0.98);
+}
+
+/* Reset button styling */
+.btn-reset {
+  flex: 0 0 auto;
+  background-color: #f8fafc;
+  color: #64748b;
+  border-color: #e2e8f0;
+  padding: 0.75rem 1rem;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.btn-reset:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-reset:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background-color: #f8fafc;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+}
+
+.reset-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.btn-reset:hover:not(:disabled) .reset-icon {
+  transform: rotate(-90deg);
+}
+
+.heart-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.card-button:hover .heart-icon {
+  transform: scale(1.15);
+}
+
+/* Footer summary */
+.app-footer {
+  margin-top: 3.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
